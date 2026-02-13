@@ -4,8 +4,14 @@ A clean, compact clock and sensor dashboard for the **ESP32-2432S028** (the "Che
 
 Monitor 6 Home Assistant entities at a glance — binary sensors (doors, motion) and numeric sensors (energy, temperature) — with dynamic colour-coded status indicators.
 
-<!-- TODO: Add image of your device -->
-<!-- ![HAMon Dashboard](images/hamon_preview.jpg) -->
+| | | |
+|:---:|:---:|:---:|
+| ![20260213_235106](https://github.com/user-attachments/assets/99bfc8c4-c0c2-44e1-9d4a-47e458e7c839) | ![20260213_235117](https://github.com/user-attachments/assets/7fbf26a3-531f-4137-b899-66bd2b57e955)| ![20260213_235130](https://github.com/user-attachments/assets/c4d557f9-7293-4593-9806-2214761aeca7)|
+| Front view | Rear view | Close-up |
+
+
+
+
 
 ## ✨ Features
 
