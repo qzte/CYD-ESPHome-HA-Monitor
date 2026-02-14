@@ -116,6 +116,7 @@ The dashboard has a 3×2 grid:
 ```yaml
 substitutions:
   r1c2_entity: "binary_sensor.front_door_sensor_contact"  # HA entity ID
+  r1c2_type: "binary"                                      # Entity type
   r1c2_label: "Front Door"                                 # Display label
   r1c2_icon: "\ueffc"                                      # Material Icon code
   r1c2_icon_color: "0x888888"                               # Default icon colour
@@ -130,6 +131,7 @@ substitutions:
 ```yaml
 substitutions:
   r1c1_entity: "sensor.whole_home_energy_usage"  # HA entity ID
+  r1c1_type: "sensor"                             # Entity type
   r1c1_label: "Energy"                            # Display label
   r1c1_icon: "\uea0b"                             # Material Icon code
   r1c1_icon_color: "0xFFA500"                      # Default icon colour
