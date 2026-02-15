@@ -80,7 +80,7 @@ ap_password: "any-fallback-hotspot-password"
 ### 5. Flash the Configuration
 
 1. In ESPHome, click **Edit** on your new device.
-2. **Replace the entire contents** with the `hamon.yaml` file from this repository.
+2. **Replace the entire contents** with the `ha-monitor.yaml` file from this repository.
 3. Update the `substitutions:` section with your own Home Assistant entity IDs (see [Configuration](#%EF%B8%8F-configuration) below).
 4. Click **Save**.
 5. Click **Install** → **Plug into this computer** (for first-time USB flash).
@@ -195,6 +195,6 @@ Feel free to fork this project and submit pull requests! See the [Roadmap](#%EF%
 
 ## 📄 License
 
-This project is licensed under the **MIT License**. See the header of `hamon.yaml` for the full license text.
+This project is licensed under the **MIT License**. See the header of `ha-monitor.yaml` for the full license text.
 
 Copyright (c) 2026 element-software
