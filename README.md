@@ -126,6 +126,20 @@ substitutions:
   r1c2_color_off: "0x32CD32"                                # Colour when OFF (green)
 ```
 
+### Inverted Binary Sensor (status appears swapped)
+
+If a door/contact sensor shows the opposite state on screen (e.g. **Open** when physically closed), set the slot `*_invert` flag to `"true"`.
+
+```yaml
+substitutions:
+  r1c2_entity: "binary_sensor.front_door_sensor_contact"
+  r1c2_state_on: "Open"
+  r1c2_state_off: "Closed"
+  r1c2_invert: "true"   # invert ON/OFF logic for this slot
+```
+
+Available flags for binary slots: `r1c2_invert`, `r2c2_invert`, `r3c1_invert`, `r3c2_invert`.
+
 ### Configuring a Numeric Sensor Slot
 
 ```yaml
