@@ -37,15 +37,16 @@ substitutions:
   friendly_name: "HAMon" # Can be whatever you like
 
   # --- Row 1, Column 1 ---
-  r1c1_entity: "sensor.whole_home_energy_usage"
+  r1c1_entity: "weather.pirateweather"
+  r1c1_attribute: "humidity"
   r1c1_type: "sensor"
-  r1c1_label: "Energy"
-  r1c1_icon: "\uea0b"
-  r1c1_icon_color: "0xFFA500"
-  r1c1_format: '%.0fW'
-  r1c1_color_thresh_high: "5000"
-  r1c1_color_thresh_mid: "3000"
-  r1c1_color_thresh_low: "1000"
+  r1c1_label: "Humidity"
+  r1c1_icon: "\ue798"
+  r1c1_icon_color: "0x00BFFF"
+  r1c1_format: '%.0f%%'
+  r1c1_color_thresh_high: "75"
+  r1c1_color_thresh_mid: "60"
+  r1c1_color_thresh_low: "40"
 
   # --- Row 1, Column 2 ---
   r1c2_entity: "binary_sensor.front_door_sensor_contact"
@@ -60,9 +61,10 @@ substitutions:
   r1c2_invert: "false"   # true = inverte lógica ON/OFF para este slot
 
   # --- Row 2, Column 1 ---
-  r2c1_entity: "sensor.office_presence_one_temperature"
+  r2c1_entity: "weather.pirateweather"
+  r2c1_attribute: "temperature"
   r2c1_type: "sensor"
-  r2c1_label: "Office"
+  r2c1_label: "Outside"
   r2c1_icon: "\ue1ff"
   r2c1_icon_color: "0x00BFFF"
   r2c1_format: '%.1f°C'
@@ -564,6 +566,7 @@ sensor:
   - platform: homeassistant
     id: ha_r1c1
     entity_id: ${r1c1_entity}
+    attribute: ${r1c1_attribute}
     on_value:
       then:
         - lvgl.label.update:
@@ -581,6 +584,7 @@ sensor:
   - platform: homeassistant
     id: ha_r2c1
     entity_id: ${r2c1_entity}
+    attribute: ${r2c1_attribute}
     on_value:
       then:
         - lvgl.label.update:
