@@ -57,6 +57,7 @@ substitutions:
   r1c2_state_off: "Closed"
   r1c2_color_on: "0xFF5252"
   r1c2_color_off: "0x32CD32"
+  r1c2_invert: "false"   # true = inverte lógica ON/OFF para este slot
 
   # --- Row 2, Column 1 ---
   r2c1_entity: "sensor.office_presence_one_temperature"
@@ -79,6 +80,7 @@ substitutions:
   r2c2_state_off: "Closed"
   r2c2_color_on: "0xFF5252"
   r2c2_color_off: "0x32CD32"
+  r2c2_invert: "false"   # true = inverte lógica ON/OFF para este slot
 
   # --- Row 3, Column 1 ---
   r3c1_entity: "binary_sensor.garden_pano_person_occupancy"
@@ -90,6 +92,7 @@ substitutions:
   r3c1_state_off: "Clear"
   r3c1_color_on: "0xFF5252"
   r3c1_color_off: "0x32CD32"
+  r3c1_invert: "false"   # true = inverte lógica ON/OFF para este slot
 
   # --- Row 3, Column 2 ---
   r3c2_entity: "binary_sensor.loft_access_door_contact"
@@ -101,6 +104,7 @@ substitutions:
   r3c2_state_off: "Closed"
   r3c2_color_on: "0xFF5252"
   r3c2_color_off: "0x32CD32"
+  r3c2_invert: "false"   # true = inverte lógica ON/OFF para este slot
 
 # ==============================================================================
 esphome:
@@ -460,15 +464,21 @@ binary_sensor:
         - lvgl.label.update:
             id: icon_r1c2
             text_color: !lambda |-
-              if (id(ha_r1c2).state) return lv_color_hex(${r1c2_color_on});
+              const bool inverted = std::string("${r1c2_invert}") == "true";
+              const bool active = inverted ? !id(ha_r1c2).state : id(ha_r1c2).state;
+              if (active) return lv_color_hex(${r1c2_color_on});
               return lv_color_hex(${r1c2_color_off});
         - lvgl.label.update:
             id: val_r1c2
             text: !lambda |-
-              if (id(ha_r1c2).state) return "${r1c2_state_on}";
+              const bool inverted = std::string("${r1c2_invert}") == "true";
+              const bool active = inverted ? !id(ha_r1c2).state : id(ha_r1c2).state;
+              if (active) return "${r1c2_state_on}";
               return "${r1c2_state_off}";
             text_color: !lambda |-
-              if (id(ha_r1c2).state) return lv_color_hex(${r1c2_color_on});
+              const bool inverted = std::string("${r1c2_invert}") == "true";
+              const bool active = inverted ? !id(ha_r1c2).state : id(ha_r1c2).state;
+              if (active) return lv_color_hex(${r1c2_color_on});
               return lv_color_hex(${r1c2_color_off});
 
   - platform: homeassistant
@@ -480,15 +490,21 @@ binary_sensor:
         - lvgl.label.update:
             id: icon_r2c2
             text_color: !lambda |-
-              if (id(ha_r2c2).state) return lv_color_hex(${r2c2_color_on});
+              const bool inverted = std::string("${r2c2_invert}") == "true";
+              const bool active = inverted ? !id(ha_r2c2).state : id(ha_r2c2).state;
+              if (active) return lv_color_hex(${r2c2_color_on});
               return lv_color_hex(${r2c2_color_off});
         - lvgl.label.update:
             id: val_r2c2
             text: !lambda |-
-              if (id(ha_r2c2).state) return "${r2c2_state_on}";
+              const bool inverted = std::string("${r2c2_invert}") == "true";
+              const bool active = inverted ? !id(ha_r2c2).state : id(ha_r2c2).state;
+              if (active) return "${r2c2_state_on}";
               return "${r2c2_state_off}";
             text_color: !lambda |-
-              if (id(ha_r2c2).state) return lv_color_hex(${r2c2_color_on});
+              const bool inverted = std::string("${r2c2_invert}") == "true";
+              const bool active = inverted ? !id(ha_r2c2).state : id(ha_r2c2).state;
+              if (active) return lv_color_hex(${r2c2_color_on});
               return lv_color_hex(${r2c2_color_off});
 
   - platform: homeassistant
@@ -500,15 +516,21 @@ binary_sensor:
         - lvgl.label.update:
             id: icon_r3c1
             text_color: !lambda |-
-              if (id(ha_r3c1).state) return lv_color_hex(${r3c1_color_on});
+              const bool inverted = std::string("${r3c1_invert}") == "true";
+              const bool active = inverted ? !id(ha_r3c1).state : id(ha_r3c1).state;
+              if (active) return lv_color_hex(${r3c1_color_on});
               return lv_color_hex(${r3c1_color_off});
         - lvgl.label.update:
             id: val_r3c1
             text: !lambda |-
-              if (id(ha_r3c1).state) return "${r3c1_state_on}";
+              const bool inverted = std::string("${r3c1_invert}") == "true";
+              const bool active = inverted ? !id(ha_r3c1).state : id(ha_r3c1).state;
+              if (active) return "${r3c1_state_on}";
               return "${r3c1_state_off}";
             text_color: !lambda |-
-              if (id(ha_r3c1).state) return lv_color_hex(${r3c1_color_on});
+              const bool inverted = std::string("${r3c1_invert}") == "true";
+              const bool active = inverted ? !id(ha_r3c1).state : id(ha_r3c1).state;
+              if (active) return lv_color_hex(${r3c1_color_on});
               return lv_color_hex(${r3c1_color_off});
 
   - platform: homeassistant
@@ -520,15 +542,21 @@ binary_sensor:
         - lvgl.label.update:
             id: icon_r3c2
             text_color: !lambda |-
-              if (id(ha_r3c2).state) return lv_color_hex(${r3c2_color_on});
+              const bool inverted = std::string("${r3c2_invert}") == "true";
+              const bool active = inverted ? !id(ha_r3c2).state : id(ha_r3c2).state;
+              if (active) return lv_color_hex(${r3c2_color_on});
               return lv_color_hex(${r3c2_color_off});
         - lvgl.label.update:
             id: val_r3c2
             text: !lambda |-
-              if (id(ha_r3c2).state) return "${r3c2_state_on}";
+              const bool inverted = std::string("${r3c2_invert}") == "true";
+              const bool active = inverted ? !id(ha_r3c2).state : id(ha_r3c2).state;
+              if (active) return "${r3c2_state_on}";
               return "${r3c2_state_off}";
             text_color: !lambda |-
-              if (id(ha_r3c2).state) return lv_color_hex(${r3c2_color_on});
+              const bool inverted = std::string("${r3c2_invert}") == "true";
+              const bool active = inverted ? !id(ha_r3c2).state : id(ha_r3c2).state;
+              if (active) return lv_color_hex(${r3c2_color_on});
               return lv_color_hex(${r3c2_color_off});
 
 # --- NUMERIC SENSOR CONFIG ---
