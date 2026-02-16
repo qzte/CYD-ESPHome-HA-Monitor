@@ -61,8 +61,7 @@ substitutions:
   r1c2_invert: "false"   # true = inverte lógica ON/OFF para este slot
 
   # --- Row 2, Column 1 ---
-  r2c1_entity: "weather.pirateweather"
-  r2c1_attribute: "temperature"
+  r2c1_entity: "sensor.consumo_diario"
   r2c1_type: "sensor"
   r2c1_label: "Outside"
   r2c1_icon: "\ue1ff"
@@ -584,7 +583,6 @@ sensor:
   - platform: homeassistant
     id: ha_r2c1
     entity_id: ${r2c1_entity}
-    attribute: ${r2c1_attribute}
     on_value:
       then:
         - lvgl.label.update:
